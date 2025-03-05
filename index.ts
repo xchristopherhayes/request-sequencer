@@ -45,7 +45,7 @@ class Finalized<R> {
   }
 }
 
-class SequentialRequest<Tasks extends any[] = []> {
+class RequestSequencer<Tasks extends any[] = []> {
   #queue: Queue<any, any>[] = [];
   #errorHandler: ErrorHandler | undefined;
   #defaultGuaranteedErrorHandler: ErrorHandler | undefined;
@@ -57,9 +57,9 @@ class SequentialRequest<Tasks extends any[] = []> {
 
   next<R = any, P = Tasks extends [...infer _, infer Last] ? Last : any>(
     task: Task<R, P>
-  ): SequentialRequest<[...Tasks, R]> {
+  ): RequestSequencer<[...Tasks, R]> {
     this.#queue.push({ task, errorHandler: undefined });
-    return this as any as SequentialRequest<[...Tasks, R]>;
+    return this as any as RequestSequencer<[...Tasks, R]>;
   }
 
   catch(errorHandler: ErrorHandler): this {
@@ -74,7 +74,7 @@ class SequentialRequest<Tasks extends any[] = []> {
   >(
     items: ForeachArray<T, P>,
     task: ForeachTask<R, T, P>
-  ): SequentialRequest<[...Tasks, R[]]> {
+  ): RequestSequencer<[...Tasks, R[]]> {
     return this.next(async (prevResult: P) => {
       const resolvedItems =
         typeof items === "function" ? items(prevResult) : items;
@@ -83,7 +83,7 @@ class SequentialRequest<Tasks extends any[] = []> {
         results.push(await task(item, prevResult));
       }
       return results;
-    }) as SequentialRequest<[...Tasks, R[]]>;
+    }) as RequestSequencer<[...Tasks, R[]]>;
   }
 
   end<R = any, All = Tasks>(callback: EndCallback<R, All>): Finalized<R> {
@@ -114,5 +114,5 @@ class SequentialRequest<Tasks extends any[] = []> {
   }
 }
 
-export { SequentialRequest };
-export default SequentialRequest;
+export { RequestSequencer };
+export default RequestSequencer;

@@ -1,5 +1,5 @@
 {
-  "name": "sequential-request",
+  "name": "request-sequencer",
   "version": "1.0.0",
   "description": "A Typescript utility that allows you to handle a sequence of tasks(function or promise) in a defined order with support for error handling.",
   "type": "module",
@@ -19,11 +19,11 @@
   ],
   "author": {
     "name": "Christopher",
-    "url": "https://github.com/xchristopherhayes/sequential-request"
+    "url": "https://github.com/xchristopherhayes/request-sequencer"
   },
   "repository": {
     "type": "github",
-    "url": "https://github.com/xchristopherhayes/sequential-request"
+    "url": "https://github.com/xchristopherhayes/request-sequencer"
   },
   "scripts": {
     "dev": "tsx watch index.ts",

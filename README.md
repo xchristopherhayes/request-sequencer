@@ -1,8 +1,8 @@
-# SequentialRequest - Typescript Utility for Sequential Task Execution
+# RequestSequencer - Typescript Utility for Sequential Task Execution
 
 ## Overview
 
-`SequentialRequest` is a Typescript utility that allows you to handle a sequence of tasks(function or promise) in a defined order with support for error handling.
+`RequestSequencer` is a Typescript utility that allows you to handle a sequence of tasks(function or promise) in a defined order with support for error handling.
 
 ## Features
 
@@ -22,15 +22,15 @@ npm install sequential-request
 ### Create a Sequential Request Instance
 
 ```typescript
-import { SequentialRequest } from "sequential-request";
+import { RequestSequencer } from "request-sequencer";
 
-const request = new SequentialRequest();
+const request = new RequestSequencer();
 ```
 
 You can also pass a default error handler to the constructor:
 
 ```typescript
-const requestWithErrorHandler = new SequentialRequest((error) => {
+const requestWithErrorHandler = new RequestSequencer((error) => {
   return {
     message: "Default Error Handler",
     error,
