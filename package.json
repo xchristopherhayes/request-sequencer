@@ -1,0 +1,48 @@
+{
+  "name": "sequential-request",
+  "version": "1.0.0",
+  "description": "A Typescript utility that allows you to handle a sequence of tasks(function or promise) in a defined order with support for error handling.",
+  "type": "module",
+  "main": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "package.json",
+    "README.md"
+  ],
+  "author": {
+    "name": "Christopher",
+    "url": "https://github.com/xchristopherhayes/sequential-request"
+  },
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/xchristopherhayes/sequential-request"
+  },
+  "scripts": {
+    "dev": "tsx watch index.ts",
+    "build": "tsup"
+  },
+  "keywords": [
+    "sequential-request",
+    "async-queue",
+    "task-runner",
+    "promise-chain",
+    "async-flow",
+    "task-sequencer",
+    "chained-promises",
+    "ordered-tasks"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "tsup": "^8.4.0",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.2"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "declaration": true,
+    "declarationMap": true,
+    "baseUrl": "."
+  },
+  "include": ["index.ts"],
+  "exclude": ["node_modules"]
+}
