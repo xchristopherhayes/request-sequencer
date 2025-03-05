@@ -116,25 +116,3 @@ class SequentialRequest<Tasks extends any[] = []> {
 
 export { SequentialRequest };
 export default SequentialRequest;
-
-const request = new SequentialRequest();
-(async () => {
-  const data = await request
-    .next(Promise.resolve("Task 1"))
-    .next((prevResult) => Promise.resolve("Task 2"))
-    .catch((error) => ({
-      message: "Task 2 Error Handler",
-      error,
-    }))
-    .foreach([1, 2, 3], (item) => Promise.resolve(item))
-    .end(([res1, res2, res3]) => ({
-      result1: res1,
-      result2: res2,
-      result3: res3,
-    }))
-    .guarantee((error) => ({
-      message: "Guaranteed Error Handler",
-      error,
-    }));
-  console.log("All results:", data);
-})();
