@@ -24,7 +24,8 @@ class Finalized<R> {
 
   constructor(endPromise: Promise<R>, defaultGuaranteedHandler?: ErrorHandler) {
     this.#endPromise = endPromise;
-    this.#defaultGuaranteedHandler = defaultGuaranteedHandler;
+    this.#defaultGuaranteedHandler =
+      defaultGuaranteedHandler || ((error) => error);
   }
 
   async guarantee(
@@ -49,7 +50,6 @@ class RequestSequencer<Tasks extends any[] = []> {
   #queue: Queue<any, any>[] = [];
   #errorHandler: ErrorHandler | undefined;
   #defaultGuaranteedErrorHandler: ErrorHandler | undefined;
-  #ended: boolean;
 
   constructor(defaultGuaranteedErrorHandler?: ErrorHandler) {
     this.#defaultGuaranteedErrorHandler = defaultGuaranteedErrorHandler;
@@ -87,7 +87,6 @@ class RequestSequencer<Tasks extends any[] = []> {
   }
 
   end<R = any, All = Tasks>(callback: EndCallback<R, All>): Finalized<R> {
-    this.#ended = true;
     const endPromise = (async () => {
       const results: R[] = [];
       try {

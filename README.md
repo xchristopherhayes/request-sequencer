@@ -1,5 +1,7 @@
 # RequestSequencer - Typescript Utility for Sequential Task Execution
 
+[![npm](https://img.shields.io/npm/v/request-sequencer?color=%23CB3837&logo=npm)](https://www.npmjs.com/package/request-sequencer)
+
 ## Overview
 
 `RequestSequencer` is a Typescript utility that allows you to handle a sequence of tasks(function or promise) in a defined order with support for error handling.
