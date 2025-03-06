@@ -1,6 +1,6 @@
 {
   "name": "request-sequencer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A Typescript utility that allows you to handle a sequence of tasks(function or promise) in a defined order with support for error handling.",
   "type": "module",
   "main": "dist/index.mjs",
